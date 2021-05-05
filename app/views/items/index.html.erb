@@ -128,9 +128,9 @@
 
       <%@items.each do |item|%>
       <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to item_path do %>
         <div class='item-img-content'>
-          <%= image_tag "furima-intro05.png", class: "item-img" %>
+          <%= image_tag item.image, class: "item-img" %>
 
           <%# 商品が売れていればsold outを表示しましょう %>
           <div class='sold-out'>
