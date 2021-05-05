@@ -5,4 +5,5 @@ class Status < ActiveHash::Base
     {id:3,name:"普通"},
     {id:4,name:"悪い"}
   ]
+  has_many :items
 end
