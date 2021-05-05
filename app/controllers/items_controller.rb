@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
   def create
+
     @item = Item.new(item_params)
     if @item.valid?
       @item.save
@@ -26,11 +27,11 @@ class ItemsController < ApplicationController
     end
   end
   def show
-    find_item
+    @item = Item.find(params[:id])
   end
   private
   def item_params
-    params.require(:item).permit(:name,:text,:category,:status,:shipping,:prefecture,:days,:price).merge(user_id:current_user.id)
+    params.require(:item).permit(:name,:text,:category_id,:status_id,:shipping_id,:prefecture_id,:days_id,:image,:price).merge(user_id:current_user.id)
   end
   def find_item
     @item = Item.find(params[:id])
