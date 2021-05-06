@@ -37,8 +37,9 @@ ActiveRecord::Schema.define(version: 2021_05_05_222610) do
     t.string "place"
     t.string "postal_number"
     t.string "phone"
-    t.integer "banti"
-    t.integer "area_id"
+    t.string "building"
+    t.string "banti"
+    t.integer "prefecture_id"
     t.bigint "order_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -1,12 +1,13 @@
 class OrdersController < ApplicationController
-  def new
+  def index
     @order_adress = OrderAdress.new
+    @item = Item.find(params[:item_id])
   end
   def create
     @item = Item.find(params[:item_id])
-    @order_adress = OrderAdress.new(order_adress_params)
-    if @order_adress.valid?
-      @order_adress.save
+    @orderadress = OrderAdress.new(order_adress_params)
+    if @orderadress.valid?
+      @orderadress.save
       redirect_to item_path(@item.id)
     else
       render :new
