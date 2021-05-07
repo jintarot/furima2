@@ -5,7 +5,9 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
   end
-  def create
+
+
+  def create 
 
     @item = Item.new(item_params)
     if @item.valid?
@@ -15,6 +17,12 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+
+  def show
+    @item = Item.find(params[:id])
+    @user = User.find(@item.id)
+  end
+
   def edit
     find_item
   end
@@ -36,4 +44,5 @@ class ItemsController < ApplicationController
   def find_item
     @item = Item.find(params[:id])
   end
+
 end
