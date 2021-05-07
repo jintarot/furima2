@@ -7,13 +7,13 @@ function pay(){
     const formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
     const card = {
-      number: formData.get("member"),
+      number: formData.get("number"),
       cvc: formData.get("cvc"),
       exp_month: formData.get("month"),
       exp_year: `20${formData.get("year")}`
     }
     Payjp.createToken(card,(status,response)=>{
-      console.log(2)
+      console.log(card)
       if(status == 200){
         const token = response.id
         document.getElementById("card-number").removeAttribute('name')

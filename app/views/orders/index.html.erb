@@ -5,15 +5,15 @@
     <h1 class='transaction-title-text'>
       購入内容の確認
     </h1>
-    <%@item.each do |item| %>
+  
     <div class='buy-item-info'>
-      <%= image_tag "item-sample.png", class: 'buy-item-img' %>
+      <%= image_tag @item.image, class: 'buy-item-img' %>
       <div class='buy-item-right-content'>
         <h2 class='buy-item-text'>
-          <%= item.name %>
+          <%= @item.name %>
         </h2>
         <div class='buy-item-price'>
-          <p class='item-price-text'>¥<%= item.price %></p>
+          <p class='item-price-text'>¥<%= @item.price %></p>
           <p class='item-price-sub-text'><%= '配送料負担' %></p>
         </div>
       </div>
@@ -23,13 +23,12 @@
     <%# 支払額の表示 %>
     <div class='item-payment'>
       <h1 class='item-payment-title'>
-        <%= item.price.to_i * 0.1 %>
+        <%= @item.price.to_i * 0.1 %>
       </h1>
       <p class='item-payment-price'>
-        ¥<%= item.price.to_i - item.price.to_i * 0.1 %>
+        ¥<%= @item.price.to_i - @item.price.to_i * 0.1 %>
       </p>
     </div>
-    <%end%>
 
     <%= form_with model: @order_adress_params,url: item_orders_path,id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
     <%# カード情報の入力 %>
