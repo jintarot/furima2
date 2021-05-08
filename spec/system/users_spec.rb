@@ -8,8 +8,7 @@ RSpec.describe "Users", type: :system do
   context '正しく新規登録できる' do
 
     it 'aaaaaaaaa' do
-      visit root_path
-      expect(page).to have_content('新規登録')
+      
       visit new_user_registration_path
         fill_in 'Nickname', with: @user.nickname
         fill_in 'Email', with:@user.email 
@@ -20,6 +19,12 @@ RSpec.describe "Users", type: :system do
         fill_in 'Input-name', with:@user.last_name_kana
         fill_in 'Input-name' ,with:@user.first_name_kana
         fill_in 'birthdata' ,with:@user.birthdate
+        expect{
+          find('input[name="commit"]').click}.to change{
+            User.count
+          }.by(1)
+          expect(current_path).to eq(root_path)
+        
     end
   end
 end
