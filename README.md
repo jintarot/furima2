@@ -32,7 +32,7 @@ has_many :orders
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|item_text|string|
+|item_text|text|
 |category_id|integer|null: false|
 |status_id|integer|null: false|
 |shipping_id|integer|null: false|
@@ -42,7 +42,7 @@ has_many :orders
 |user|references|foreign_key: true|
 
 belongs_to: user
-has_one: orders
+has_one: order
     
   # Orders
 |Column|Type|Options|
@@ -61,7 +61,7 @@ has_one: address
 |------|----|-------|
 |postal_number|string|null: false|
 |phone_number|string|null: false|
-|building|string|null: false|
+|building|string|null: false|null: false|
 |place|string|null: false|
 |place_detail|string|null: false|
 |prefecture_id|integer|null: false|
