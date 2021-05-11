@@ -26,6 +26,7 @@ Things you may want to cover:
 
 
 
+
 # Item
 |Column|Type|Options|
 |------|----|-------|
@@ -38,6 +39,7 @@ Things you may want to cover:
 |days|integer|
 |price|integer|
 |user|references|foreign_key: true|
+
     
   # Order
 |Column|Type|Options|
@@ -45,7 +47,9 @@ Things you may want to cover:
 |price|integer|
 |user|references|foreign_key: true|
 |item|references|foreign_key: true|
+
   # Address
+
 |Column|Type|Options|
 |------|----|-------|
 |postal_number|string|
