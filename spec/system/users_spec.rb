@@ -19,6 +19,7 @@ RSpec.describe "Users", type: :system do
         fill_in 'Full-name1' ,with:@user.last_name
         fill_in 'Input-name', with:@user.last_name_kana
         fill_in 'Input-name1' ,with:@user.first_name_kana
+        fill_in '年' ,with: @user.birthdata
         
         expect{
           find('input[name="commit"]').click}.to change{

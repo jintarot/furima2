@@ -82,17 +82,12 @@
       <span class="indispensable">必須</span>
     </div>
     <div class='input-birth-wrap'>
-      <%= raw sprintf(
-                  f.text_area(
-                    :birthdata,
-                    class:'select-birth',
-                    id:"birth-data",
-                    use_month_numbers: true,
-                    prompt:'--',
-                    start_year: 1930,
-                    end_year: (Time.now.year - 5),
-                    date_separator: '%s'),
-                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+    <label for="form-text0">年</label>
+      <%= f.text_area :birthdata,class:"input-name", id:"form-text0",placeholder:"年"%>
+      <label for="form-text2">月</label>
+       <%= f.text_area :birthdata,class:"input-name", id:"form-text2",placeholder:"月"%>
+       <label for="form-text3">日</label>
+        <%= f.text_area :birthdata,class:"input-name", id:"form-text3",placeholder:"日"%>
     </div>
     <p class='info-text'>※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。</p>
   </div>
