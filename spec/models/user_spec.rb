@@ -81,25 +81,11 @@ RSpec.describe @User, type: :model do
       expect (@user.errors.full_messages).to include("Password is invalid")
   end
   it '生年月日がなければ登録できない' do
-     @user.birthdata = ""
+     @user.birthdate = ""
      @user.valid?
       expect (@user.errors.full_messages).to include("Birthdata can't be blank")
   end
-  it 'last_nameの書式が間違えていれば登録できない' do
-    @user.last_name = "hello"
-    @user.valid?
-    expect(@user.errors.full_messages).to include("Last name is invalid. Input full-width characters.")
-  end
-  it 'first_nameの書式が適切でなければ登録できない' do
-    @user.first_name ="hello"
-    @user.valid?
-    expect(@user.errors.full_messages).to include("First name is invalid. Input full-width characters.")
-  end
   
-    context '登録できる時' do
-    it 'nickname,password,password_confirmation,last_name,last_name_kana,first_name,first_name_kanaがあれば登録できる' do
-      expect( @user).to be_valid
-    end
   end
   end
 end
