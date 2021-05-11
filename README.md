@@ -12,41 +12,48 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
-# User
+# Users
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string||
-|email|string|null: false|
-|password|string|null: false|
+|email|string|unique: true,null: false|
+|encrypted_password|string|null: false|
 |last_name|string|
 |first_name|string|
 |last_name_kana|string|
 |first_name_kana|string|
 |birthdata|data|
+has_many :items
+has_many :orders
 
 
 
-
-# Item
+# Items
 |Column|Type|Options|
 |------|----|-------|
 |name|string|
-|text|string|
-|category|integer|
-|status|integer|
-|shipping|integer|
-|area|integer|
-|days|integer|
+|item_text|string|
+|category_id|integer|
+|status_id|integer|
+|shipping_id|integer|
+|prefecture_id|integer|
+|days_id|integer|
 |price|integer|
 |user|references|foreign_key: true|
 
+belongs_to: user
+has_many: orders
     
-  # Order
+  # Orders
 |Column|Type|Options|
 |------|----|-------|
-|price|integer|
+
 |user|references|foreign_key: true|
 |item|references|foreign_key: true|
+
+belongs_to: user
+belongs_to: item
+has_many: address
 
   # Address
 
@@ -56,11 +63,11 @@ Things you may want to cover:
 |phone_number|string|
 |building|string|
 |place|string|
-|banti|string|
-|prefecture|integer|
+|place_detail|string|
+|prefecture_id|integer|
 |order|references|foreign_key: true|
 
-      
+belongs_to: order
       
 * Database initialization
 
