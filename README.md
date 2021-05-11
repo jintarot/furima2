@@ -18,30 +18,45 @@ Things you may want to cover:
 |nickname|string||
 |email|string|null: false|
 |password|string|null: false|
+|last_name|string|
+|first_name|string|
+|last_name_kana|string|
+|first_name_kana|string|
+|birthdata|data|
+
 
 
 # Item
-    string :item_name
-      text :item_text
-      integer :category
-      integer :status
-      integer :shipping
-      integer :area
-      integer :days          
-      integer :price        
-      references :user
+|Column|Type|Options|
+|------|----|-------|
+|name|string|
+|text|string|
+|category|integer|
+|status|integer|
+|shipping|integer|
+|area|integer|
+|days|integer|
+|price|integer|
+|user|references|foreign_key: true|
+    
   # Order
-      integer :price
-      references :item
-      references :user
+|Column|Type|Options|
+|------|----|-------|
+|price|integer|
+|user|references|foreign_key: true|
+|item|references|foreign_key: true|
   # Address
-      string :postal_number
-      string :phone_number
-      string :building
-      string :place
-      integer :place_detail
-      integer :area
-      references :order
+|Column|Type|Options|
+|------|----|-------|
+|postal_number|string|
+|phone_number|string|
+|building|string|
+|place|string|
+|banti|string|
+|prefecture|integer|
+|order|references|foreign_key: true|
+
+      
       
 * Database initialization
 
