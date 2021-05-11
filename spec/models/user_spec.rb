@@ -19,7 +19,7 @@ RSpec.describe @User, type: :model do
       
       expect @user.errors.full_messages).to include("Email can't be blank")
     end
-      # emailが空では登録できないテストコードを記述します
+      
     it 'emailに＠がなければいけない' do
        @user.email = 'helloworldgamil.com'
   
@@ -29,18 +29,18 @@ RSpec.describe @User, type: :model do
     end
     it 'emailは一意でないといけない'do
        @user.save
-      another @user = FactoryBot.build( @user)
-      another @user.email =  @user.email
-      another @user.valid?
-      expect(another @user.errors.full_messages).to include('Email has already been taken')
+      another_user = FactoryBot.build( @user)
+      another_user.email =  @user.email
+      another_user.valid?
+      expect(another_user.errors.full_messages).to include('Email has already been taken')
   end
     it 'passwordがなければ登録できない' do
-       @user.password
+       @user.password = ""
        @user.valid?
       expect( @user.errors.full_messages).to include("Password can't be blank")
     end
     it 'last_nameが空では登録できない' do
-       @user.lastname = ""
+       @user.last_name = ""
      @user.valid?
       expect @user.errors.full_messages).to include("Last name can't be blank")
     end
@@ -61,7 +61,7 @@ RSpec.describe @User, type: :model do
     end
    
     it 'first_name_kanaの書式が正しくなければ登録できない' do
-       @user.first_name_kana
+       @user.first_name_kana = "aaaaaa"
      @user.valid?
       expect @user.errors.full_messages).to include("First name kana is invalid. Input full-width characters.")
     end
