@@ -13,13 +13,13 @@ Things you may want to cover:
 
 * Database creation
 # User
-      string :nickname    
-      date   :birth_date      
-      string :first_name        
-      string :last_name         
-      string :last_name_kana
-      string :first_name_kana
-      string :email
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string||
+|email|string|null: false|
+|password|string|null: false|
+
+
 # Item
     string :item_name
       text :item_text
