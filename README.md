@@ -32,7 +32,7 @@ has_many :orders
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|item_text|text|
+|item_text|text|null: false|
 |category_id|integer|null: false|
 |status_id|integer|null: false|
 |shipping_id|integer|null: false|
@@ -61,7 +61,7 @@ has_one: address
 |------|----|-------|
 |postal_number|string|null: false|
 |phone_number|string|null: false|
-|building|string|null: false||
+|building|string||
 |place|string|null: false|
 |place_detail|string|null: false|
 |prefecture_id|integer|null: false|
