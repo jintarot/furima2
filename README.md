@@ -15,14 +15,14 @@ Things you may want to cover:
 # Users
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string||
+|nickname|string|null: false|
 |email|string|unique: true,null: false|
 |encrypted_password|string|null: false|
-|last_name|string|
-|first_name|string|
-|last_name_kana|string|
-|first_name_kana|string|
-|birthdata|data|
+|last_name|string|null: false|
+|first_name|string|null: false|
+|last_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|birthdata|data|null: false|
 has_many :items
 has_many :orders
 
@@ -31,18 +31,18 @@ has_many :orders
 # Items
 |Column|Type|Options|
 |------|----|-------|
-|name|string|
+|name|string|null: false|
 |item_text|string|
-|category_id|integer|
-|status_id|integer|
-|shipping_id|integer|
-|prefecture_id|integer|
-|days_id|integer|
-|price|integer|
+|category_id|integer|null: false|
+|status_id|integer|null: false|
+|shipping_id|integer|null: false|
+|prefecture_id|integer|null: false|
+|days_id|integer|null: false|
+|price|integer|null: false|
 |user|references|foreign_key: true|
 
 belongs_to: user
-has_many: orders
+has_one: orders
     
   # Orders
 |Column|Type|Options|
@@ -53,18 +53,18 @@ has_many: orders
 
 belongs_to: user
 belongs_to: item
-has_many: address
+has_one: address
 
   # Address
 
 |Column|Type|Options|
 |------|----|-------|
-|postal_number|string|
-|phone_number|string|
-|building|string|
-|place|string|
-|place_detail|string|
-|prefecture_id|integer|
+|postal_number|string|null: false|
+|phone_number|string|null: false|
+|building|string|null: false|
+|place|string|null: false|
+|place_detail|string|null: false|
+|prefecture_id|integer|null: false|
 |order|references|foreign_key: true|
 
 belongs_to: order
