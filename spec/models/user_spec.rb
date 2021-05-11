@@ -86,10 +86,6 @@ RSpec.describe User, type: :model do
       expect(user.errors.full_messages).to include("Birthdata can't be blank")
   end
   
-    
-    
-    
-    
   end
     context '登録できる時' do
     it 'nickname,password,password_confirmation,last_name,last_name_kana,first_name,first_name_kanaがあれば登録できる' do
