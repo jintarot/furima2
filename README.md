@@ -37,7 +37,7 @@ has_many :orders
 |status_id|integer|null: false|
 |shipping_id|integer|null: false|
 |prefecture_id|integer|null: false|
-|days_id|integer|null: false|
+|day_id|integer|null: false|
 |price|integer|null: false|
 |user|references|foreign_key: true|
 
@@ -61,7 +61,7 @@ has_one: address
 |------|----|-------|
 |postal_number|string|null: false|
 |phone_number|string|null: false|
-|building|string|null: false|null: false|
+|building|string|null: false||
 |place|string|null: false|
 |place_detail|string|null: false|
 |prefecture_id|integer|null: false|
