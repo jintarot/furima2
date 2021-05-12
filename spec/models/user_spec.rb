@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe @User, type: :model do
     before do
-       @user = FactoryBot.build( @user)
-      @email =  @user.email
+        @user = FactoryBot.build( @user)
+        @email =  @user.email
     end
   describe "ユーザー新規登録" do
     context '登録できない時' do
@@ -100,6 +100,11 @@ RSpec.describe @User, type: :model do
     @user.valid?
      expect (@user.errors.full_messages).to include("Password is invalid")
  end
+ context '登録できる時'　 do
+ it '全ての要素が正しく入力されていれば登録できる' do
+  expect(@user).to be_valid
+ end
+end
 end
 end
 end
