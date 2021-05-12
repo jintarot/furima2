@@ -9,7 +9,7 @@ class User < ApplicationRecord
     validates :first_name
     validates :last_name
     end
-    with_options format:{/\A[ぁ-んァ-ヶ一-龥々ー]+\z/,message:"is invalid. Input full-width characters."} do
+    with_options format:{with:/\A[ぁ-んァ-ヶ一-龥々ー]+\z/,message:"is invalid. Input full-width characters."} do
     validates :last_name_kana
     validates :first_name_kana
     end
