@@ -109,17 +109,17 @@ RSpec.describe "User", type: :model do
           @user.valid?
           expect(@user.errors.full_messages).to include("First_name is invalid")
         end
-        it 'first_name_kanaはカタカナ以外では登録できない'　do
+        it 'first_name_kanaは全角カタカナ以外では登録できない'　do
           @user.first_name_kana = "aaaaaaああああ"
           @user.valid?
           expect(@user.errors.full_messages).to include("First_name_kana is invalid")
         end
-        it 'last_nam_kanaはカタカナ以外では登録できない'　do
+        it 'last_nam_kanaは全角カタカナ以外では登録できない'　do
           @user.last_name_kana = 'aaaaaあああああ'
           @user.valid?
           expect(@user.errors.full_messages).to include('Last_name_kana is invalid')
         end
-        
+
     end
       context '登録できる時' do
           it '全ての要素が正しく入力されていれば登録できる' do
