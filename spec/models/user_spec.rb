@@ -85,7 +85,21 @@ RSpec.describe @User, type: :model do
      @user.valid?
       expect (@user.errors.full_messages).to include("Birthdata can't be blank")
   end
-  
+  it 'passwordが６文字以上でなければ登録できない'　do
+    @user.password = ""
+    @user.valid?
+    expect(@user.errors.full_messages).to include("Passward is invalid")
   end
+  it 'passwordが全角では登録できないこと'　do
+    @user.password = "９９９９９９９"
+    @user.valid?
+     expect (@user.errors.full_messages).to include("Password is invalid")
   end
+  it 'passwordが全角英字のみでは登録できない' do
+    @user.password = "ｓｊｄｋｄｖｂ"
+    @user.valid?
+     expect (@user.errors.full_messages).to include("Password is invalid")
+ end
+end
+end
 end
