@@ -105,8 +105,13 @@ RSpec.describe "User", type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Last_name can't be blank")
         end
+        it 'first_nameが漢字・平仮名・カタカナ以外では登録できない' do
+          @user.first_name = "helloworld"
+          @user.valid?
+          expect(@user.errors.full_messages).to include("First_name can't be blank")
+        end
     end
-      context '登録できる時'　 do
+      context '登録できる時' do
           it '全ての要素が正しく入力されていれば登録できる' do
               expect(@user).to be_valid
             end
