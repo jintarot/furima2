@@ -71,12 +71,12 @@ RSpec.describe @User, type: :model do
       expect (@user.errors.full_messages).to include("Last name kana is invalid. Input full-width characters.")
     end
     it 'passwordが半角英字のみでは登録できない' do
-     @user.password = "ｓｊｄｋｄｖｂ"
+     @user.password = "aaaaaaaaaaaa"
      @user.valid?
       expect (@user.errors.full_messages).to include("Password is invalid")
   end
   it 'passwordが半角数字のみでは登録できない' do
-     @user.password = "９９９９９９９"
+     @user.password = "999999999"
      @user.valid?
       expect (@user.errors.full_messages).to include("Password is invalid")
   end
