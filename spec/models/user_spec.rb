@@ -105,6 +105,11 @@ RSpec.describe User, type: :model do
           @user.valid?
           expect(@user.errors.full_messages).to include("First_name is invalid")
         end
+        it 'user_idがなければ投稿できない'　do
+          @user.user = ""
+          @user.valid?
+          expect(@user.errors.full_messages).to include("User can't be blank")
+        end
         
     end
       context '登録できる時' do

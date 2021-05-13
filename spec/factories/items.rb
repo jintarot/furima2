@@ -9,5 +9,6 @@ FactoryBot.define do
     price             {2000}
     prefecture_id     {7}
     image             {'E6F3FF64-0FBE-47C1-8CBD-73DA28475AF3_1_201_a.jpeg'}
+    user              {1}
   end
 end
