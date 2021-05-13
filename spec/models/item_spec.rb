@@ -4,6 +4,7 @@ RSpec.describe Item, type: :model do
   before do
   @item =  FactoryBot.build(:item)
   end
+  
 describe '登録できない' do
     it 'nameがなければ登録できない' do
       @item.name = ""
@@ -47,8 +48,17 @@ describe '登録できない' do
       @item.valid?
       expect(@item.errors.full_messages).to include("Category must be other than 0")
     end
+  end
+  describe '登録できる' do
+    it '全ての要素が正しく投稿できれば登録できる' do
+      expect(@item).to be_valid
+    end
+  end
   
   end
 
-  pending "add some examples to (or delete) #{__FILE__}"
-end
+  
+  
+
+  
+
