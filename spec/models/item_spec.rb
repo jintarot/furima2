@@ -63,11 +63,28 @@ describe '登録できない' do
       @item.valid?
       expect(@image.errors.full_messages).to include("Price is invalid")
     end
-    it 'priceは半角数字以外では登録できない' do
+    
+    it 'userが紐付いていないと投稿できない' do
+      @item.user = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include('User must exist')
+    end
+    it '全角文字では登録できない' do
       @item.price = ９９９
       @item.valid?
       expect(@image.errors.full_messages).to include("Price is invalid")
     end
+    it '半角英数混合では投稿できない' do
+      @item.price = 999aaa
+      @item.valid?
+      expect(@image.errors.full_messages).to include("Price is invalid")
+    end
+    it '半角英語では登録できない' do
+      @item.price = "aaaaaaaaaa"
+      @item.valid?
+      expect(@image.errors.full_messages).to include("Price is invalid")
+    end
+
   end
   describe '登録できる' do
     it '全ての要素が正しく投稿できれば登録できる' do
