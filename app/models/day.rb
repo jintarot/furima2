@@ -1,8 +1,8 @@
 class Day < ActiveHash::Base
   self.data = [
-    {id:1,name:"------"},
-    {id:2,name:"soon"},
-    {id:3,name:"not soon"}
+    {id:0,name:"------"},
+    {id:1,name:"soon"},
+    {id:2,name:"not soon"}
   ]
 end
   
