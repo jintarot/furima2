@@ -8,4 +8,7 @@ class Status < ActiveHash::Base
     {id:5,name:"汚れや傷あり"},
     {id:6,name:"全体的に悪い"}
   ]
+  
+  include ActiveHash::Associations
+  has_many :items
 end
