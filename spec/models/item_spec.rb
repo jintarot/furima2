@@ -58,7 +58,7 @@ describe '登録できない' do
       @item.valid?
       expect(@image.errors.full_messages).to include("Price is invalid")
     end
-    it 'priceは999999以上であっては登録できない'　do
+    it 'priceは9999999以上であっては登録できない'　do
       @item.price = 100000000
       @item.valid?
       expect(@image.errors.full_messages).to include("Price is invalid")
@@ -70,12 +70,12 @@ describe '登録できない' do
       expect(@item.errors.full_messages).to include('User must exist')
     end
     it '全角文字では登録できない' do
-      @item.price = ９９９
+      @item.price = "９９９"
       @item.valid?
       expect(@image.errors.full_messages).to include("Price is invalid")
     end
     it '半角英数混合では投稿できない' do
-      @item.price = 999aaa
+      @item.price = "999aaa"
       @item.valid?
       expect(@image.errors.full_messages).to include("Price is invalid")
     end

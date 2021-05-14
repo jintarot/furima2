@@ -19,4 +19,5 @@ class Item < ApplicationRecord
   belongs_to :status
   belongs_to :day
   belongs_to :prefecture
+  belongs_to :shipping_id
 end
