@@ -70,7 +70,7 @@ describe '登録できない' do
       expect(@item.errors.full_messages).to include('User must exist')
     end
     it '全角文字では登録できない' do
-      @item.price = "９９９"
+      @item.price = ９９９
       @item.valid?
       expect(@image.errors.full_messages).to include("Price is invalid")
     end
