@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user! ,only:[:new,:create,:edit,:update]
+  before_action :not_collect_user,only:[:edit,:update]
   def index
     @items = Item.all.order(created_at:"DESC")
   end
@@ -20,12 +21,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.new
+    @item = Item.find
   end
 
   def update
-    @item = Item.new(item_params)
-    if @item.save
+    @item = Item.find
+    if @item.update(item_params)
       redirect_to item_path
     else
       render :edit
@@ -39,5 +40,11 @@ class ItemsController < ApplicationController
   
   def find_item
     @item = Item.find(params[:id])
+  end
+  def not_collect_user
+    @item = Item.find(parsms[:id])
+    if @item.user != current_user
+      redirect_to root_path
+    end
   end
 end
