@@ -57,11 +57,9 @@ app/assets/stylesheets/items/new.css %>
           商品の状態
           <span class="indispensable">必須</span>
         </div>
-<<<<<<< Updated upstream
-        <%= f.collection_select(:status_id, [], :id,:name, {}, {class:"select-box", id:"item-sales-status"}) %>
-=======
+
         <%= f.collection_select(:status_id,Status.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
->>>>>>> Stashed changes
+
       </div>
     </div>
     <%# /商品の詳細 %>

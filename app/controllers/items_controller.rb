@@ -20,36 +20,36 @@ class ItemsController < ApplicationController
   end
   def edit
     @item = Item.find(params[:id])
-<<<<<<< Updated upstream
+
   end
   def update
     @item = Item.find(params[:id])
-=======
+
     @item_image = @item.image
   end
   def update
     @item = Item.find(params[:id])
     
   
->>>>>>> Stashed changes
+
     if @item.update(item_params)
       redirect_to item_path
     else
       render :edit
     end
   end
-<<<<<<< Updated upstream
-=======
+
+
 
   
->>>>>>> Stashed changes
+
   private
   def item_params
     params.require(:item).permit(:image,:name,:item_text,:prefecture_id,:category_id,:status_id,:day_id,:shipping_id,:prefecture_id,:price).merge(user_id:current_user.id)
   end
-<<<<<<< Updated upstream
+
   
-=======
+
   def find_item
     @item = Item.find(params[:id])
   end
@@ -59,5 +59,5 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end
   end
->>>>>>> Stashed changes
+
 end
