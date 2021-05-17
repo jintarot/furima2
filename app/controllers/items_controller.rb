@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user! ,only:[:new,:create,:edit,:update]
-  before_action :find_item, only:[:show,:not_collect_user]
+  before_action :find_item, only:[:show ,:not_collect_user]
   befere_action :not_collect_user, only:[:edit,:update]
   
   def index
@@ -19,7 +19,6 @@ class ItemsController < ApplicationController
     end
   end
   def show
-  
   end
   def edit
 
@@ -39,6 +38,7 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:image,:name,:item_text,:prefecture_id,:category_id,:status_id,:day_id,:shipping_id,:prefecture_id,:price).merge(user_id:current_user.id)
   end
   def find_item
+    
     @item = Item.find(params[:id])
   end
   def not_collect_user
