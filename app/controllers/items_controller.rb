@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
   def not_collect_user
     @item = Item.find(params[:id])
     if @item.user != current_user
-      redirect_to item_path(@item.id)
+      redirect_to root_path
     end
   end
 end
