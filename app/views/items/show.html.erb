@@ -16,7 +16,7 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        <%=@item.price %>
+        <%=@item.price %>円
       </span>
       <span class="item-postage">
         <%= @item.shipping.name%>
@@ -51,7 +51,7 @@
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= @item.status.name　%></td>
+          <td class="detail-value"><%= @item.status.name%></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
@@ -96,8 +96,8 @@
   </div>
   <div class="links">
     
-      <%= link_to "＜ 前の商品", item_path(@item.id - 1)　,class:"change-item-btn"%>
-      <%= link_to "後ろの商品 ＞",item_path(@item.id + 1)　,class:"change-item-btn"%>
+      <%= link_to "＜ 前の商品", item_path(@item.id - 1),class:"change-item-btn"%>
+      <%= link_to "後ろの商品 ＞",item_path(@item.id + 1),class:"change-item-btn"%>
     
   </div>
   <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
