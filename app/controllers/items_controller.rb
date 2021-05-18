@@ -28,6 +28,8 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
+  def destroy
+  end
   
   private
   def item_params
@@ -37,7 +39,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
   def not_collect_user
-    if @user.user != current_user
+    if @item.user != current_user
       redirect_to
     end
   end

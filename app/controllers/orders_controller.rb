@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   def create
     @item = Item.find(params[:item_id])
     @io = ItemOrder.new(io_params)
+    if @io.valid?
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
         amount: @item.price,
@@ -14,6 +15,7 @@ class OrdersController < ApplicationController
       )
       @io.save
       redirect_to root_path
+    end
   end
   private
   def io_params
