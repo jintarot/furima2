@@ -17,13 +17,11 @@ class ItemsController < ApplicationController
     end
   end
   def show
-   find_item
   end
   def edit
-    @item = Item.find(params[:id])
+    
   end
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path
     else
@@ -38,4 +36,7 @@ class ItemsController < ApplicationController
   def find_item
     @item = Item.find(params[:id])
   end
+  def not_collect_user
+    if @user.user != current_user
+      redirect_to
 end
