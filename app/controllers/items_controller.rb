@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user! ,only:[:new,:create,:edit,:update]
-  before_action :find_item, only:[:show,:edit,:update,:destroy]
-  before_action :not_collect_user, only:[:edit,:update]
+before_action :find_item, only:[:show,:edit,:update,:destroy]
+  before_action :not_collect_user, only:[:edit,:update,:destroy]
   def index
     @items = Item.all.order(created_at:"DESC")
   end
@@ -16,11 +16,14 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+
   def show
   end
+
   def edit
-    
+
   end
+
   def update
     if @item.update(item_params)
       redirect_to item_path
@@ -28,19 +31,24 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-  def destroy
-  end
+
+def destroy
+    @item.destroy
+    redirect_to root_path
+
+ end
   
   private
   def item_params
     params.require(:item).permit(:image,:name,:item_text,:prefecture_id,:category_id,:status_id,:day_id,:shipping_id,:prefecture_id,:price).merge(user_id:current_user.id)
   end
+  
   def find_item
     @item = Item.find(params[:id])
   end
   def not_collect_user
     if @item.user != current_user
-      redirect_to
+      redirect_to root_path
     end
   end
 end
