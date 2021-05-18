@@ -39,4 +39,6 @@ class ItemsController < ApplicationController
   def not_collect_user
     if @user.user != current_user
       redirect_to
+    end
+  end
 end
