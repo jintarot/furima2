@@ -43,25 +43,25 @@ describe '登録できない' do
       @item.valid?
       expect(@item.errors.full_messages).to include("Day must be other than 0")
     end
-    it 'category_idが0では登録できない' do
-      @item.category_id = 0
-      @item.valid?
-      expect(@item.errors.full_messages).to include("Category must be other than 0")
-    end
-    it 'imageが空では登録できない'　do
-      @item.image = nil
-      @image.valid?
-      expect(@image.errors.full_messages).to include("Image can't be blank")
-    end
-    it 'priceは300以下では登録できない'　do
-      @item.price = 299
-      @item.valid?
-      expect(@image.errors.full_messages).to include("Price is invalid")
-    end
-    it 'priceは9999999以上であっては登録できない'　do
+     it 'category_idが0では登録できない' do
+       @item.category_id = 0
+       @item.valid?
+       expect(@item.errors.full_messages).to include("Category must be other than 0")
+     end
+     it 'imageが空では登録できない' do
+       @item.image = nil
+       @item.valid?
+       expect(@item.errors.full_messages).to include("Image can't be blank")
+     end
+     it 'priceが空では登録できない' do
+       @item.price = 299
+       @item.valid?
+       expect(@item.errors.full_messages).to include("Price is invalid")
+     end
+    it 'priceは9999999以上であっては登録できない' do
       @item.price = 100000000
       @item.valid?
-      expect(@image.errors.full_messages).to include("Price is invalid")
+      expect(@item.errors.full_messages).to include("Price is invalid")
     end
     
     it 'userが紐付いていないと投稿できない' do

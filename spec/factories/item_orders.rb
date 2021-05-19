@@ -5,9 +5,9 @@ FactoryBot.define do
     city              {"神戸"}
     adress            {"1111"}
     building          {"aaaaa"}
-    phone_number       {"1111111"}
-    assosiation :user
-    asoociation :item
+    phone_number       {"07018196422"}
+    user_id             {1}
+    item_id             {2}
     
   end
 end
