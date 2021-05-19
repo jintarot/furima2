@@ -4,8 +4,10 @@ RSpec.describe ItemOrder, type: :model do
   
   before do 
   @io = FactoryBot.build(:item_order)
-  @io.user_id = User.find(1).id
-  @io.item_id = Item.find(1).id
+  user = FactoryBot.create(:user)
+  item = FactoryBot.create(:item)
+  @item_buy = FactoryBot.build(:item_buy,user_id: user.id,item_id: item.id)
+
   end  
   
   describe 'can' do
@@ -41,7 +43,7 @@ RSpec.describe ItemOrder, type: :model do
        expect(@io.errors.full_messages).to include("Adress can't be blank")
      end
      it 'user情報がなければ購入できない' do
-      @io.user_id = @user.id
+      @io.user_id = nil
       @io.valid?
       expect(@io.errors.full_messages).to include("User can't be blank")
      end

@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
   end
   def io_params
-    params.require(:item_order).permit(:postal_code,:prefecture_id,:city,:adress,:building,:phone_number,:token).merge(user_id:current_user.id,item_id:@item.id)
+    params.require(:item_order).permit(:postal_code,:prefecture_id,:city,:adress,:building,:phone_number).merge(token:params[:token],user_id:current_user.id,item_id:@item.id)
   end
   def ordered
     if current_user == @item.user || @item.order != nil

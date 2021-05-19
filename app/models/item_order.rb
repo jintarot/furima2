@@ -4,7 +4,7 @@ class ItemOrder
   with_options presence: true do
     validates :postal_code,format:{with:/\A[0-9]+\z/,message:"is invalid. Input full-width characters."}
     validates :prefecture_id,numericality:{other_than:0}
-    validates :city,format:{with:/\A[ぁ-んァ-ヶ一-龥々ー]+\z/,message:"is invalid. Input full-width characters."}
+    validates :city
     validates :adress
     validates :phone_number,format:{with:/\A\d{10,11}\z/,message:"is invalid. Input full-width characters"}
     validates :user_id
