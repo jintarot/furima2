@@ -4,6 +4,8 @@ RSpec.describe ItemOrder, type: :model do
   
   before do 
   @io = FactoryBot.build(:item_order)
+  @io.user_id = User.find(1).id
+  @io.item_id = Item.find(1).id
   end  
   
   describe 'can' do
@@ -13,7 +15,7 @@ RSpec.describe ItemOrder, type: :model do
        expect(@io.errors.full_messages).to include("Postal code can't be blank")
      end
     it 'postal_codeの書式が違えば登録できない' do
-      @io.postal_code = "helloworld"
+      @io.postal_code = "hello"
       @io.valid?
       expect(@io.errors.full_messages).to include("Postal code is invalid. Input full-width characters.")
     end
@@ -39,7 +41,7 @@ RSpec.describe ItemOrder, type: :model do
        expect(@io.errors.full_messages).to include("Adress can't be blank")
      end
      it 'user情報がなければ購入できない' do
-      @io.user_id = nil
+      @io.user_id = @user.id
       @io.valid?
       expect(@io.errors.full_messages).to include("User can't be blank")
      end
@@ -58,10 +60,20 @@ RSpec.describe ItemOrder, type: :model do
       @io.valid?
       expect(@io.errors.full_messages).to include("Phone number can't be blank")
      end
-     
+     it 'tokenがからでは登録できない' do
+      @io.token = ""
+      @io.valid?
+      expect(@io.errors.full_messages).to include("Token can't be blank")
+     end
   end
   describe 'can not' do
     it '全ての要素が正しく投稿できれば登録できる' do
+      @io.user_id = @user.id
+      @io.item_id = @item.id
+      expect(@io).to be_valid
+    end
+    it 'buildingがなくても購入できる' do
+      @io.building = ""
       expect(@io).to be_valid
     end
    end

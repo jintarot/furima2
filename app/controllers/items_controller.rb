@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user! ,only:[:new,:create,:edit,:update]
 before_action :find_item, only:[:show,:edit,:update,:destroy]
   before_action :not_collect_user, only:[:edit,:update,:destroy]
+  before_action :already_ordered,only:[:edit,:update,:destroy]
   def index
     @items = Item.all.order(created_at:"DESC")
   end
@@ -31,7 +32,10 @@ before_action :find_item, only:[:show,:edit,:update,:destroy]
       render :edit
     end
   end
-
+  def destroy
+    @item.destroy
+    redirect_to root_path
+  end
   
   private
   def item_params
@@ -43,6 +47,11 @@ before_action :find_item, only:[:show,:edit,:update,:destroy]
   end
   def not_collect_user
     if @item.user != current_user
+      redirect_to root_path
+    end
+  end
+  def already_ordered
+    if @item.order != nil
       redirect_to root_path
     end
   end

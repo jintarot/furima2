@@ -4,7 +4,7 @@ function pay(){
   form.addEventListener("submit",()=>{
     const form = document.getElementById("charge-form1")
     const formData = new FormData(form);
-    console.log("hello");
+    
     const card = {
       number: formData.get("item_order[number]"),
       cvc: formData.get("item_order[cvc]"),
@@ -14,7 +14,7 @@ function pay(){
 
     Payjp.createToken(card,(status,response) => {
       if(status === 200){
-        console.log(response.id)
+        
         const token = response.id
         const form = document.getElementById("charge-form1")
         const input = `<input value=${token} name='token' type="hidden"> `;
