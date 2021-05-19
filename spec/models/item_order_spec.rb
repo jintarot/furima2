@@ -67,6 +67,16 @@ RSpec.describe ItemOrder, type: :model do
       @io.valid?
       expect(@io.errors.full_messages).to include("Token can't be blank")
      end
+     it 'phone_numberは１２桁以上ではいけない' do
+      @io.phone_number = "111111111111111"
+      @io.valid?
+      expect(@io.errors.messages).to include("Phone number is invalid. Input full-width characters")
+     end
+     it 'phone_numberは英数字混合では登録できない' do
+      @io.phone_number = "hello1010101010101"
+      @io.valid?
+      expect(@io.errors.messages).to include("Phone number is invalid. Input full-width characters")
+     end
   end
   describe 'can not' do
     it '全ての要素が正しく投稿できれば登録できる' do
