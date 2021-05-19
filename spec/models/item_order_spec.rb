@@ -58,6 +58,7 @@ RSpec.describe ItemOrder, type: :model do
       @io.valid?
       expect(@io.errors.full_messages).to include("Phone number can't be blank")
      end
+     
   end
   describe 'can not' do
     it '全ての要素が正しく投稿できれば登録できる' do
