@@ -20,6 +20,10 @@ RSpec.describe ItemOrder, type: :model do
       @io.valid?
       expect(@io.errors.full_messages).to include("Postal code is invalid. Input full-width characters.")
     end
+    it 'postal_codeはハイフンがなければばならない' do
+      @io.postal_code = "1111111"
+      @io.valid?
+      expect(@io.errors.full_messages).to include("Postal_code is invalid. Input full-width characters.")
      it 'prefecture_idが空では登録できない' do
        @io.prefecture_id = 0
        @io.valid?
@@ -88,14 +92,6 @@ RSpec.describe ItemOrder, type: :model do
       expect(@io).to be_valid
     end
    end
-     
-
-    
-    
-  
-    
-
-    
 end 
   
  
