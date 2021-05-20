@@ -3,10 +3,9 @@ require 'rails_helper'
 RSpec.describe ItemOrder, type: :model do
   
   before do 
-  @io = FactoryBot.build(:item_order)
   user = FactoryBot.create(:user)
   item = FactoryBot.create(:item)
-  @item_buy = FactoryBot.build(:item_buy,user_id: user.id,item_id: item.id)
+  @item_buy = FactoryBot.build(:item_order,user_id: user.id,item_id: item.id)
 
   end  
   
