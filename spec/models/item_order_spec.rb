@@ -35,11 +35,7 @@ RSpec.describe ItemOrder, type: :model do
        @io.valid?
        expect(@io.errors.full_messages).to include("City can't be blank")
      end
-   it 'cityの書式が違えば登録できない' do
-    @io.city = "hello"
-    @io.valid?
-    expect(@io.errors.full_messages).to include("City is invalid. Input full-width characters.")
-   end
+   
      it 'adressが空では登録できない'do
        @io.adress = ""
        @io.valid?
