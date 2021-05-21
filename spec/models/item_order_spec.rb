@@ -9,7 +9,7 @@ RSpec.describe ItemOrder, type: :model do
 
   end  
   
-  describe 'can' do
+  describe '異常' do
     it 'postai_codeがなければ登録できない' do
       @io.postal_code = ""
        @io.valid?
@@ -82,7 +82,7 @@ RSpec.describe ItemOrder, type: :model do
       expect(@io.errors.messages).to include("Phone number is invalid. Input full-width characters")
      end
   end
-  describe 'can not' do
+  describe '正常' do
     it '全ての要素が正しく投稿できれば登録できる' do
       @io.user_id = @user.id
       @io.item_id = @item.id
