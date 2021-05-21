@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user! ,only:[:create,:index]
-  before_action :find_item
-  before_action :ordered
+  before_action :find_item,only:[:create]
+  before_action :ordered,only:[:index,:create]
   def index
     @io = ItemOrder.new
   end
