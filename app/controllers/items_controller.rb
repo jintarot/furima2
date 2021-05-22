@@ -1,16 +1,10 @@
 class ItemsController < ApplicationController
-  
-  
-  def index
-    @items = Item.all.order(created_at:"DESC")
-
   before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :find_item, only: %i[show edit update destroy]
   before_action :not_collect_user, only: %i[edit update destroy]
   before_action :already_ordered, only: %i[edit update destroy]
   def index
     @items = Item.all.order(created_at: 'DESC')
-
   end
 
   def new
