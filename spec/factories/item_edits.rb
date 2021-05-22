@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :item do
+  factory :item_edit do
     name              { '鳥の絵' }
     item_text         { 'very good' }
     category_id       { 2 }
