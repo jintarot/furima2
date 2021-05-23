@@ -9,7 +9,11 @@ class OrdersController < ApplicationController
   def create
     @io = ItemOrder.new(io_params)
     if @io.valid?
-      item_pay
+      if current_user.card.nil?
+        item_pay
+      else
+        card_pay
+      end
       @io.save
       redirect_to root_path
     else
@@ -38,6 +42,16 @@ class OrdersController < ApplicationController
     Payjp::Charge.create(
       amount: @item.price,
       card: params[:token],
+      currency: 'jpy'
+    )
+  end
+
+  def card_pay
+    @card = current_user.card
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: @card.card_token,
       currency: 'jpy'
     )
   end

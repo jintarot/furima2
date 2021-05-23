@@ -19,12 +19,10 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-  
 
   def show; end
 
   def edit; end
-
 
   def update
     if @item.update(item_params)
@@ -38,7 +36,6 @@ class ItemsController < ApplicationController
     @item.destroy
     redirect_to root_path
   end
-
 
   private
 
@@ -58,5 +55,4 @@ class ItemsController < ApplicationController
   def already_ordered
     redirect_to root_path unless @item.order.nil?
   end
-  
 end
