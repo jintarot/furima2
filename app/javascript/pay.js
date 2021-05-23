@@ -14,6 +14,10 @@ function pay(){
     }
     
     Payjp.createToken(card,(status,response) => {
+      if(status != 200){
+        document.getElementById("charge-form1").submit();
+      }
+   
       if(status === 200){
         const token = response.id
         const form = document.getElementById("charge-form1")
@@ -27,7 +31,7 @@ function pay(){
 
           document.getElementById("charge-form1").submit();
       };
-    });
+      });
 
     
   })
