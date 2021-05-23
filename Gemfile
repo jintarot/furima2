@@ -65,3 +65,4 @@ gem 'rubocop', require: false
 gem 'rubocop-rails'
 
 gem 'payjp'
+gem "aws-sdk-s3", require: false
